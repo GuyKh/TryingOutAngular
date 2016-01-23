@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+    <title>My Page</title>
+    <meta charset="utf-8" />
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+    <div id="header">
+        <H1>My Task List</H1>
+    </div>
+    <div ng-controller="TasksIndexController as ctrl">
+
+
+        <label class="check">
+            <div ng-repeat="task in tasks" class="squaredTwo">
+                <input type="checkbox" name="{{task.Name}}" ng-checked="{{task.Completed}}">
+                {{task.Name}}
+                </input>
+            </div>
+        </label>
+
+
+        <input ng-model="name" />
+        <button ng-click="add()">Add</button>
+        <br />
+        <button ng-click="save()">Save</button>
+
+        <br/>
+
+        Got {{tasks.Length}} Tasks  
+    </div>
+
+    <script src="angular.js"></script>
+    <script src="App.js"></script>
+    <script src="TasksService.js"></script>
+    <script src="TasksIndexController.js"></script>
+</body>
+
+</html>
