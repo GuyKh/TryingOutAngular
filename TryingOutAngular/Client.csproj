@@ -129,6 +129,7 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\es6-promise\es6-promise.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Task.ts" />
     <TypeScriptCompile Include="TasksIndexController.ts" />
     <TypeScriptCompile Include="TasksService.ts" />
   </ItemGroup>

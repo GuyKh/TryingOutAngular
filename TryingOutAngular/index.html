@@ -13,28 +13,23 @@
     <div ng-controller="TasksIndexController as ctrl">
 
 
-        <label class="check">
-            <div ng-repeat="task in tasks" class="squaredTwo">
-                <input type="checkbox" name="{{task.Name}}" ng-checked="{{task.Completed}}">
-                {{task.Name}}
-                </input>
-            </div>
-        </label>
+        <div ng-repeat="task in tasks">
+            <input type="checkbox" name="{{task.Name}}" ng-checked="{{task.Completed}}" ng-changed="checked(task)">
+            {{task.Name}}
+        </div>
 
 
         <input ng-model="name" />
         <button ng-click="add()">Add</button>
-        <br />
-        <button ng-click="save()">Save</button>
-
         <br/>
-
-        Got {{tasks.Length}} Tasks  
+        {{tasks.length > 0 ? "Got some tasks" : ""}}
+        
     </div>
 
     <script src="angular.js"></script>
     <script src="App.js"></script>
     <script src="TasksService.js"></script>
+    <script src="Task.js"></script>
     <script src="TasksIndexController.js"></script>
 </body>
 

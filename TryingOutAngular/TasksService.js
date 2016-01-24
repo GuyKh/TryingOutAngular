@@ -7,20 +7,11 @@ var TasksService = (function () {
         return this.$http.get("http://localhost:4668/api/Tasks").then(function (response) {
             return response.data;
         });
-        //var deferred = this.$q.defer();
-        //setTimeout(() => {
-        //    deferred.resolve([
-        //        { id: 1, name: "Ori" },
-        //        { id: 2, name: "Roni" },
-        //    ]);
-        //}, 2000);
-        //return deferred.promise;
-        //return this.$q.when([
-        //    { id: 1, name: "Ori" },
-        //    { id: 2, name: "Roni" },
-        //]);
+    };
+    TasksService.prototype.addOrUpdateTask = function (task) {
+        var jsonString = JSON.stringify(task);
+        this.$http.post("http://localhost:4668/api/Tasks", jsonString);
     };
     return TasksService;
 })();
 angular.module("MyApp").service("tasksService", TasksService);
-//# sourceMappingURL=TasksService.js.map
