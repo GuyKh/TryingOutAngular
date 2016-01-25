@@ -1,12 +1,19 @@
 ﻿class TasksIndexController {
     tasks: ITask[];
-    name: string;
     $scope;
 
     constructor($scope, private tasksService: TasksService) {
         this.$scope = $scope;
-
+        this.$scope.add = this.add;
+        this.$scope.check = this.check;
         this.refresh();
+        this.$scope.tasks = [];
+        this.$scope.$watchCollection(() => {
+            return this.tasksService.tasks;
+        }, (tasks) => {
+            this.$scope.tasks = tasks;
+            //console.log("got " + tasks.length + " tasks");
+        });
     }
 
     add(): void {
@@ -23,15 +30,14 @@
     }
 
     refresh(): void {
-        var self = this;
-        this.tasksService.getAll().then(tasks => {
-            this.$scope.tasks = tasks;
-            console.log("got " + tasks.length + " tasks");
-        }).catch(err => {
-            console.log(err);
+        //this.tasksService.getAll().then(tasks => {
+        //    this.$scope.tasks = tasks;
+        //    console.log("got " + tasks.length + " tasks");
+        //}).catch(err => {
+        //    console.log(err);
 
-            alert("ERROR: " + err.statusText);
-        });
+        //    alert("ERROR: " + err.statusText);
+        //});
     }
 }
 

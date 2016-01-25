@@ -1,7 +1,15 @@
 var TasksService = (function () {
-    function TasksService($q, $http) {
-        this.$q = $q;
+    function TasksService($http, $interval) {
+        var _this = this;
         this.$http = $http;
+        this.$interval = $interval;
+        this.tasks = [];
+        var that = this;
+        this.$interval(function () {
+            _this.$http.get("http://localhost:4668/api/Tasks").then(function (response) {
+                that.tasks = response.data;
+            }).catch(function (error) { console.log("Error " + error); });
+        }, 1000);
     }
     TasksService.prototype.getAll = function () {
         return this.$http.get("http://localhost:4668/api/Tasks").then(function (response) {
@@ -15,4 +23,4 @@ var TasksService = (function () {
     return TasksService;
 })();
 angular.module("MyApp").service("tasksService", TasksService);
-//# sourceMappingURL=TasksService.js.map
+//angular.module("MyApp").service("tasksService", TasksService); 

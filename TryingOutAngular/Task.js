@@ -4,4 +4,3 @@ var Task = (function () {
     }
     return Task;
 })();
-//# sourceMappingURL=Task.js.map

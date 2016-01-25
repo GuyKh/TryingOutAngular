@@ -1,10 +1,21 @@
 ﻿class TasksService {
-    constructor(private $q: ng.IQService, private $http: ng.IHttpService) {
+    http : angular.IHttpService;
+    timeout: angular.ITimeoutService;
+    public tasks: Array<ITask>;
+
+    constructor(private $http: ng.IHttpService, private $interval: ng.IIntervalService) {
+        this.tasks = [];
+
+        var that = this;
+        this.$interval(() => {
+            this.$http.get("http://localhost:4668/api/Tasks").then((response: any) => {
+                that.tasks = <ITask[]>response.data;
+            }).catch((error) => { console.log("Error " + error) });
+        }, 1000);
     }
-
+    
     getAll(): ng.IPromise<ITask[]> {
-
-        return this.$http.get("http://localhost:4668/api/Tasks").then(response => {
+    return this.$http.get("http://localhost:4668/api/Tasks").then(response => {
             return response.data;
         });
     }
@@ -22,3 +33,4 @@ interface ITask {
 }
 
 angular.module("MyApp").service("tasksService", TasksService);
+//angular.module("MyApp").service("tasksService", TasksService);
