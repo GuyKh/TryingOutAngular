@@ -25,9 +25,8 @@
     refresh(): void {
         var self = this;
         this.tasksService.getAll().then(tasks => {
-            this.tasks = tasks;
+            this.$scope.tasks = tasks;
             console.log("got " + tasks.length + " tasks");
-            setTimeout(function () { self.$scope.$apply(); });
         }).catch(err => {
             console.log(err);
 

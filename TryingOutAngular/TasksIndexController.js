@@ -19,9 +19,8 @@ var TasksIndexController = (function () {
         var _this = this;
         var self = this;
         this.tasksService.getAll().then(function (tasks) {
-            _this.tasks = tasks;
+            _this.$scope.tasks = tasks;
             console.log("got " + tasks.length + " tasks");
-            setTimeout(function () { self.$scope.$apply(); });
         }).catch(function (err) {
             console.log(err);
             alert("ERROR: " + err.statusText);
@@ -30,3 +29,4 @@ var TasksIndexController = (function () {
     return TasksIndexController;
 })();
 angular.module("MyApp").controller("TasksIndexController", TasksIndexController);
+//# sourceMappingURL=TasksIndexController.js.map
