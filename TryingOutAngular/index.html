@@ -4,27 +4,47 @@
     <title>My Page</title>
     <meta charset="utf-8" />
     <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <link href="../Content/bootstrap-theme.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.9.1.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
 </head>
 <body>
 
-    <div id="header">
+    <div class="container">
+        <div class="page-header"></div>
         <H1>My Task List</H1>
     </div>
-    <div ng-controller="TasksIndexController as ctrl">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Tasks
+                    <span class="pull-right glyphicon glyphicon-edit"></span>
+                </div>
+                <div class="panel-body" ng-controller="TasksIndexController as ctrl">
 
 
-        <div ng-repeat="task in tasks">
-            <input type="checkbox" name="{{task.Name}}" ng-checked="{{task.Completed}}" ng-changed="checked(task)">
-            {{task.Name}}
+                    <div ng-repeat="task in tasks">
+                        <input type="checkbox" name="{{task.Name}}" ng-checked="{{task.Completed}}" ng-changed="checked(task)">
+                        {{task.Name}}
+                    </div>
+
+                    <br />
+                    {{tasks.length > 0 ? "Got some tasks" : "No tasks yet"}}
+                    <br/>
+                    <div class="pull-left">
+                        <input ng-model="name" />
+                        <button class="btn btn-danger" ng-click="add()">Add</button>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
-
-
-        <input ng-model="name" />
-        <button ng-click="add()">Add</button>
-        <br/>
-        {{tasks.length > 0 ? "Got some tasks" : ""}}
-        
     </div>
+
 
     <script src="angular.js"></script>
     <script src="App.js"></script>
