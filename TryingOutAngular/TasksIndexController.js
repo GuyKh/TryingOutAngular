@@ -29,8 +29,9 @@ var TasksIndexController = (function () {
         var task = new Task(name);
         this.tasksService.addOrUpdateTask(task);
     };
-    TasksIndexController.prototype.update = function (task) {
+    TasksIndexController.prototype.check = function (task) {
         console.log("checking " + task.id);
+        task.Completed = true;
         this.tasksService.addOrUpdateTask(task);
     };
     return TasksIndexController;

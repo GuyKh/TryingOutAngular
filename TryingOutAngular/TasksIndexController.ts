@@ -43,8 +43,9 @@
         
     }
 
-    update(task: ITask): void {
+    check(task: ITask): void {
         console.log("checking " + task.id);
+        task.Completed = true;
         this.tasksService.addOrUpdateTask(task);
     }
 }

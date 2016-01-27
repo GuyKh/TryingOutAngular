@@ -27,7 +27,7 @@
                 <div class="panel-body" ng-controller="TasksIndexController as ctrl">
                     <div ng-repeat="task in tasks" class="checkbox">
                         <label>
-                            <input type="checkbox" name="{{task.Name}}" ng-checked="{{task.Completed}}" ng-changed="ctrl.update(task)">
+                            <input type="checkbox" ng-checked="task.Completed" ng-click="ctrl.check(task)"/>
                             {{task.Name}}
                         </label>
                     </div>
