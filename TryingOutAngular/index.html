@@ -27,17 +27,16 @@
                 <div class="panel-body" ng-controller="TasksIndexController as ctrl">
                     <div ng-repeat="task in tasks" class="checkbox">
                         <label>
-                            <input type="checkbox" name="{{task.Name}}" ng-checked="{{task.Completed}}" ng-changed="checked(task)">
+                            <input type="checkbox" name="{{task.Name}}" ng-checked="{{task.Completed}}" ng-changed="ctrl.update(task)">
                             {{task.Name}}
                         </label>
                     </div>
 
-                    <br />
-                    <!--{{tasks.length == 0 ? "No tasks yet" : ""}}-->
+                    
                     <br />
                     <div class="pull-left">
                         <input ng-model="name" />
-                        <button class="btn btn-primary" ng-click="add()">Add</button>
+                        <button class="btn btn-primary" ng-click="ctrl.add(name)">Add</button>
                     </div>
                 </div>
             </div>
@@ -46,7 +45,30 @@
 
 
 
-    <script src="angular.js"></script>
+    <!--<div class="container">
+
+        <h1>Tasks</h1>
+
+
+        <div class="items" ng-controller="TasksIndexController as ctrl">
+
+            <div ng-repeat-start="task in tasks"></div>
+            <input id="{{task.id}}" type="checkbox" name="{{task.Name}}" ng-changed="checked(task)" />
+            <label for="{{task.id}}"> {{task.Name}} </label>
+            <div ng-repeat-end></div>
+
+            <h2 class="done" aria-hidden="true">Done</h2>
+            <h2 class="undone" aria-hidden="true">Not Done</h2>
+        </div>
+        <br />
+
+        <input ng-model="name" />
+        <button class="btn btn-primary" ng-click="add()">Add</button>
+    </div>-->
+
+
+
+<script src="angular.js"></script>
     <script src="App.js"></script>
     <script src="TasksService.js"></script>
     <script src="Task.js"></script>

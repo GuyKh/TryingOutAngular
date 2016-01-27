@@ -11,14 +11,14 @@
             this.$http.get("http://localhost:4668/api/Tasks").then((response: any) => {
                 that.tasks = <ITask[]>response.data;
             }).catch((error) => { console.log("Error " + error) });
-        }, 1000);
+        }, 3000);
     }
     
-    getAll(): ng.IPromise<ITask[]> {
-    return this.$http.get("http://localhost:4668/api/Tasks").then(response => {
-            return response.data;
-        });
-    }
+    //getAll(): ng.IPromise<ITask[]> {
+    //return this.$http.get("http://localhost:4668/api/Tasks").then(response => {
+    //        return response.data;
+    //    });
+    //}
 
     addOrUpdateTask(task: ITask) {
         var jsonString = JSON.stringify(task);
