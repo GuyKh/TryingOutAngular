@@ -39,8 +39,10 @@
     add(name: string): void {
         console.log("Adding New Task: " + this.name);
         var task = new Task(name);
+        this.$scope.name = "";
         this.tasksService.addOrUpdateTask(task);
         
+
     }
 
     check(task: ITask): void {

@@ -27,6 +27,7 @@ var TasksIndexController = (function () {
     TasksIndexController.prototype.add = function (name) {
         console.log("Adding New Task: " + this.name);
         var task = new Task(name);
+        this.$scope.name = "";
         this.tasksService.addOrUpdateTask(task);
     };
     TasksIndexController.prototype.check = function (task) {

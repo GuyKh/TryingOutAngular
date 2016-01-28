@@ -25,14 +25,17 @@
                     <span class="pull-right glyphicon glyphicon-edit"></span>
                 </div>
                 <div class="panel-body" ng-controller="TasksIndexController as ctrl">
-                    <div ng-repeat="task in tasks" class="checkbox">
-                        <label>
-                            <input type="checkbox" ng-checked="task.Completed" ng-click="ctrl.check(task)"/>
-                            {{task.Name}}
-                        </label>
+                    <div class="well">
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="task in tasks">
+                                <label>
+                                    <input type="checkbox" ng-checked="task.Completed" ng-click="ctrl.check(task)" />
+                                    {{task.Name}}
+                                </label>
+                            </li>
+                        </ul>
                     </div>
 
-                    
                     <br />
                     <div class="pull-left">
                         <input ng-model="name" />
@@ -68,7 +71,7 @@
 
 
 
-<script src="angular.js"></script>
+    <script src="angular.js"></script>
     <script src="App.js"></script>
     <script src="TasksService.js"></script>
     <script src="Task.js"></script>
